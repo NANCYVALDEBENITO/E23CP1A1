@@ -25,9 +25,6 @@
 <ol class="done" id="done">
 	<h3>Done:</h3>
 </ol>
-</body>
-</html>
-Y el siguiente arreglo de objetos:
 <script>
 	var asdf = [{
 			"completed":false,
@@ -80,4 +77,28 @@ Y el siguiente arreglo de objetos:
 			"id":10,
 			"title":"Illo est ratione doloremque quia maiores aut",
 		}];
+
+		function completeTask() {
+			var i;
+            for (i = 0; i < asdf.length; i++) { 
+				console.log(asdf[i].completed)
+				if (asdf[i].completed == false){
+					container = document.querySelector("#todo")
+		            listElement = document.createElement("li");
+		            listElement.innerHTML = asdf[i].title;
+		            container.appendChild(listElement);
+	        	}else if (asdf[i].completed == true){
+					container = document.querySelector("#done")
+		            listElement = document.createElement("li");
+		            listElement.innerHTML = asdf[i].title;
+		            container.appendChild(listElement);
+
+				}
+
+			}
+		}
+		completeTask()
 </script>
+</body>
+</html>
+
