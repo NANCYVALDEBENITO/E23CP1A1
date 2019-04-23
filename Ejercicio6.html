@@ -6,7 +6,7 @@
 	<title></title>
 </head>
 <body>
-    <button>Clasificar Arreglo</button> 
+    <button onclick="sortlist()">Clasificar Arreglo</button> 
     <ul id="par">
         <strong>Pares</strong>
     </ul>
@@ -18,6 +18,38 @@
     </ul>
     <script>
         var arr = [1,'dos','tres',4,5,6,'siete',8,9,'diez'];
+        var sortlist = function(){
+            var i;
+            for (i = 0; i < arr.length; i++) { 
+                if ( Object.prototype.toString.call(arr[i]) === '[object String]' ){
+                    //var s = document.getELementById("string");
+                    container = document.querySelector("#string")
+                    listElement = document.createElement("li");
+                    listElement.innerHTML = arr[i];
+                    container.appendChild(listElement);
+                    console.log(arr[i])
+                }else if ( Number.isInteger(arr[i]) === true ){
+                    if (arr[i]%2 == 0){
+                        console.log("par")
+                        console.log(arr[i])
+                        //var p = document.getELementById("par");
+                        container = document.querySelector("#par")
+                        listElement = document.createElement("li");
+                        listElement.innerHTML = arr[i];
+                        container.appendChild(listElement);
+                    }else{
+                        console.log("impar")
+                        console.log(arr[i])
+                        //var i =document.getELementById("impar");
+                        container = document.querySelector("#impar")
+                        listElement = document.createElement("li");
+                        listElement.innerHTML = arr[i];
+                        container.appendChild(listElement);
+                    }
+             
+                } 
+            }
+        }
     </script>
 </body>
 </html
