@@ -14,10 +14,17 @@
 			float: left;
 			margin-left: 100px;
 		}
+		li.nostyle {
+		    list-style-type: none;
+		}
 	</style>
 </head>
 <body>
-
+<ol>
+	<label for="completeTask">Completado?</label>
+	<input type="Text" name="complete" id="complete" class="form-control">
+	<input type="submit" value="Submit" id="submit" onclick="change()">
+</ol>
 <ol class="todo" id="todo">
 	<h3>To Do:</h3>
 </ol>
@@ -80,24 +87,60 @@
 
 		function completeTask() {
 			var i;
+			     
             for (i = 0; i < asdf.length; i++) { 
 				console.log(asdf[i].completed)
 				if (asdf[i].completed == false){
 					container = document.querySelector("#todo")
 		            listElement = document.createElement("li");
-		            listElement.innerHTML = asdf[i].title;
+		            listElement.className = "nostyle";
+		            listElement.setAttribute("id", asdf[i].id)
+		            listElement.innerHTML = asdf[i].id + ". " + asdf[i].title;
+		           
 		            container.appendChild(listElement);
 	        	}else if (asdf[i].completed == true){
 					container = document.querySelector("#done")
 		            listElement = document.createElement("li");
-		            listElement.innerHTML = asdf[i].title;
+		            listElement.className = "nostyle";
+		      
+		            listElement.setAttribute("id", asdf[i].id)
+		            listElement.innerHTML = asdf[i].id+ ". " + asdf[i].title;
+		            
 		            container.appendChild(listElement);
+
 
 				}
 
+
 			}
+
 		}
 		completeTask()
+		function change() {
+			var id = document.querySelector("#complete").value
+			console.log(id)
+			for (i = 0; i < asdf.length; i++) { 
+				if( asdf[i].id == id){
+            		container = document.querySelector("#done")
+		            listElement = document.createElement("li");
+		            listElement.className = "nostyle";
+		            listElement.setAttribute("id", asdf[i].id)
+		            listElement.innerHTML = asdf[i].id+ ". " + asdf[i].title;
+		            container.appendChild(listElement);
+            		console.log(asdf[i].completed)
+            		container = document.querySelector("#todos")
+            		
+            		var list=document.getElementById(asdf[i].id);
+					list.parentNode.removeChild(list);
+
+            		
+		            
+        		}
+        	}
+        	
+        	;
+		}
+		
 </script>
 </body>
 </html>
